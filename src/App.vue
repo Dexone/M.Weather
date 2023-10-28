@@ -1,31 +1,46 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-      <h1>123123</h1>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <Header />
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <div
+    style="width: 1300px; background-color: rgba(0, 0, 0, 0.7); margin-left: auto; margin-right: auto; margin-top: 10px; height: 250px; padding: 20px;  ">
+    <WeatherNow />
+  </div>
+
+  <table cellspacing="20" style="margin-left: 295px; margin-top: 10px;">
+    <tr>
+      <td>
+        <div
+          style="  width: 640px; height: 290px; background-color: rgba(0, 0, 0, 0.7); padding: 20px; margin-right: 10px;">
+          <Weather5day />
+        </div>
+      </td>
+
+      <td>
+        <div
+          style="width: 305px; height: 290px; background-color: rgba(0, 0, 0, 0.7); padding: 20px; display: inline-block; color: white; ">
+          <FavouriteCity />
+        </div>
+      </td>
+    </tr>
+  </table>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<script setup>
+import Weather5day from "./components/Weather5day.vue"
+
+import WeatherNow from "./components/WeatherNow.vue"
+import FavouriteCity from "./components/FavouriteCity.vue"
+import Header from "./components/Header.vue"
+
+import { provide, ref } from 'vue'
+const city = ref()
+provide("city", city)
+
+
+
+</script>
+
+
+
+
