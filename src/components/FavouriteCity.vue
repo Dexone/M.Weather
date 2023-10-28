@@ -40,7 +40,7 @@ const listFavourites = ref([])
 
 const state = useStorage('vue-use-local-storage', listFavourites)
 
-const button = document.querySelector("#butt")
+const button = document.querySelector("#butt") //   ну что это такое то кринж
 button.onclick = function addFavourite() {
     let input = document.querySelector("#inp").value
     listFavourites.value.push(input);
@@ -65,15 +65,15 @@ function update() {
 
     const throttledFn = useThrottleFn(() => {
         while (i < count) {
-axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${listFavourites.value[i]}&units=metric&appid=dd942f90e8c353bb0a469a7db5bbb3d4`).then((res) => {
-    temps.value.push(Math.round(res.data.list[0].main.temp))
-    pics.value.push("/src/assets/minimin/" + res.data.list[0].weather[0].main + ".png")
-})
-i++
-}
-}, 1000)
+            axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${listFavourites.value[i]}&units=metric&appid=dd942f90e8c353bb0a469a7db5bbb3d4`).then((res) => {
+                temps.value.push(Math.round(res.data.list[0].main.temp))
+                pics.value.push(import.meta.env.BASE_URL+'/minimin/' + res.data.list[0].weather[0].main + ".png")
+            })
+            i++
+        }
+    }, 1000)
 
-window.addEventListener('resize', throttledFn)
+    window.addEventListener('resize', throttledFn)
     console.log(pics)
 }
 onMounted(() => update())

@@ -48,13 +48,13 @@ function getWeather() {
     const weatherData = res.data.list.map((item, index) => {
       return {
         day: res.data.list[index].dt_txt.slice(8, -9) + "." + res.data.list[index].dt_txt.slice(5, -12),
-        pic: "/src/assets/min/" + res.data.list[index].weather[0].main + ".png",
+        pic: import.meta.env.BASE_URL + "/min/" + res.data.list[index].weather[0].main + ".png",
         temp: Math.round(res.data.list[index].main.temp),
         wind: Math.round(res.data.list[index].wind.speed),
-        grnd: Math.round(res.data.list[index].main.grnd_level/1.333),
-        visibility: (res.data.list[index].visibility)/1000,
+        grnd: Math.round(res.data.list[index].main.grnd_level / 1.333),
+        visibility: (res.data.list[index].visibility) / 1000,
         humidity: res.data.list[index].main.humidity,
-        pop: Math.round(res.data.list[index].pop*100),
+        pop: Math.round(res.data.list[index].pop * 100),
       }
     })
     weatherInfo.value = weatherData; weatherData.splice(0, 8); weatherData.splice(1, 7); weatherData.splice(2, 7); weatherData.splice(3, 7); weatherData.splice(4, 6)

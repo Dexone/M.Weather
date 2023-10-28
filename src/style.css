@@ -2,6 +2,6 @@
 body{
   width: 1890px;
   height: 900px;
-  background-image: url(/src/assets/back.jpg);
+  background-image: url(/back.jpg);
   font-family:'Open Sans'
 }

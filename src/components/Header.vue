@@ -1,7 +1,7 @@
 <template>
     <div style="background-color: rgba(0, 0, 0, 0.9);height: 80px;padding-left: 300px;padding-top: 20px;font-size: 26px;">
         M.WEATHER
-        <button @click=latlong class="button is-success is-rounded"><img src="/src/assets/geo.png"></button>
+        <button @click=latlong class="button is-success is-rounded"><img src="/geo.png"></button>
         <input class="input" id="inp" type="text" placeholder="Введите название города"
             style="width: 300px; margin-right: 5px; margin-left: 5px;">
         <button id="butt" class="button is-danger is-rounded" style="width: 5px; margin-right: 5px;">❤️</button>
