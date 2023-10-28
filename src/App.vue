@@ -15,7 +15,11 @@
           <Weather5day />
         </div>
       </td>
-
+      <td>
+        <div style="margin-right: 10px;">
+          <Graph />
+        </div>
+      </td>
       <td>
         <div
           style="width: 305px; height: 290px; background-color: rgba(0, 0, 0, 0.7); padding: 20px; display: inline-block; color: white; ">
@@ -28,7 +32,7 @@
 
 <script setup>
 import Weather5day from "./components/Weather5day.vue"
-
+import Graph from "./components/Graph.vue"
 import WeatherNow from "./components/WeatherNow.vue"
 import FavouriteCity from "./components/FavouriteCity.vue"
 import Header from "./components/Header.vue"
