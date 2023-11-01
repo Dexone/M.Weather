@@ -20,8 +20,6 @@
         </tr>
     </table>
 </template>
-
-
 <script setup>
 import axios from 'axios'
 import { ref, inject, watch, onMounted } from 'vue'
@@ -29,29 +27,21 @@ import { useStorage } from '@vueuse/core'
 import { useThrottleFn } from '@vueuse/core'
 
 const city = inject("city")
-
 defineProps({
     type: Object,
     required: true
 })
-
-
 const listFavourites = ref([])
-
 const state = useStorage('vue-use-local-storage', listFavourites)
-
 const button = document.querySelector("#butt") //   ну что это такое то кринж
 button.onclick = function addFavourite() {
     let input = document.querySelector("#inp").value
     listFavourites.value.push(input);
 }
-
 const chooseCity = ref()
 function searchFavourite() {
     city.value = "q=" + chooseCity.value
 }
-
-
 const temps = ref([])
 const pics = ref([])
 watch(listFavourites.value, () => {
@@ -62,7 +52,6 @@ function update() {
     pics.value.length = 0
     let count = listFavourites.value.length
     let i = 0
-
     const throttledFn = useThrottleFn(() => {
         while (i < count) {
             axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${listFavourites.value[i]}&units=metric&appid=dd942f90e8c353bb0a469a7db5bbb3d4`).then((res) => {
@@ -77,8 +66,4 @@ function update() {
     console.log(pics)
 }
 onMounted(() => update())
-
-
-
-
 </script>
